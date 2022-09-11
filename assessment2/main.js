@@ -1,24 +1,22 @@
-//import { encryptText } from './modules/encrypt.js';
+import { encryptText } from './modules/encrypt.js';
 
-
-const alphabet = [...'abcdefghijklmnopqrstuvwxyz'];
 const option = document.getElementById('shift');
 const textInput = document.getElementById('plaintext');
 const encryptedTextArea = document.getElementById('encryptedText');
+let shiftOption = "";
 
 option.addEventListener('change',
     (e) => {
-    //console.log('option = ' + e.target.value);
+        shiftOption = e.target.value;
+        console.log("shift inside" + shiftOption);
+
+        if(shiftOption.length) {
+            textInput.addEventListener('keyup',
+                (e) => {
+                    let text = e.target.value;
+                    encryptedTextArea.value = encryptText(text, shiftOption);
+                });
+        }
 });
-
-textInput.addEventListener('keyup',
-    (e) => {
-        //console.log('text = ' + e.target.value);
-        let text = e.target.value;
-        encryptedTextArea.value = e.target.value;
-        //console.debug(encryptedTextArea.value);
-    });
-
-
 
 
