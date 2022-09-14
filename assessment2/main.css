@@ -1,12 +1,27 @@
 .app {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100vh;
 }
 
-.app-panel {
+.app__visual {
+    background-image: url('img/caesar_cipher_device.jpg');
+    background-size: contain;
+    background-position: center center;
+    width: 50%;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+.app__functional {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.app__panel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,4 +29,10 @@
     border: 1px solid gray;
     border-radius: 20px;
     padding: 50px;
+    width: 50%;
+}
+
+.app__panel textarea {
+    width: 100%;
+    min-height: 70px;
 }

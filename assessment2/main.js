@@ -6,13 +6,8 @@ let encryptedTextArea = document.getElementById('encryptedText');
 let shiftOption;
 let textValue;
 
-const getShiftedValue = (e) => {
-    shiftOption = e.target.value;
-}
-
-const getText = (e) => {
-    textValue = e.target.value;
-}
+const getShiftedValue = (e) => {shiftOption = e.target.value;}
+const getText = (e) => {textValue = e.target.value;}
 
 const disabledStyles = () => {
     textInput.disabled = false;
@@ -20,9 +15,7 @@ const disabledStyles = () => {
 }
 
 option.addEventListener('change', (e) => {
-    if (!textValue) {
-        disabledStyles();
-    }
+    if (!textValue) {disabledStyles();}
     getShiftedValue(e);
     encryptedTextArea.value = textValue ? encryptText(textValue, shiftOption) : "";
 });
