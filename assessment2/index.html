@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>HYF - Week 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <script async type="module" src="main.js"></script>
   </head>
@@ -11,23 +14,47 @@
     <div class="app__visual">
     </div>
     <div id="app" class="app__functional">
-      <div class="app__panel">
-        <form>
-          <label for="shift">Shift:</label>
-          <select name="shift" id="shift">
-            <option value="" disabled selected hidden>choose a shift</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </form>
 
-        <h2>Text</h2>
-        <textarea disabled id="plaintext"></textarea>
+      <div class="app__functional-wrap">
+        <h1>Caesar cipher</h1>
+        <div class="app__info">
+          <div class="app__info-img">
+            <img src="img/cesar.png" alt="cesar">
+          </div>
+          <div class="app__info-text">
+            The Caesar cipher is a classic example of ancient cryptography
+            and is said to have been used by Julius Caesar.
+            The Caesar cipher is based on transposition and involves shifting
+            each letter of the plaintext message by a certain number of letters.
+          </div>
+        </div>
 
-        <h2>Decrypted</h2>
-        <textarea disabled readonly id="encryptedText"></textarea></div>
+        <div class="app__panel">
+          <form class="app__form">
+            <h2>1. Select shift value.</h2>
+            <select class="app__select" name="shift" id="shift">
+              <option value="" disabled selected hidden>Choose a shift</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </form>
+
+          <div class="app__text">
+            <div class="app__text-wrap">
+              <h2>2. Type original text.</h2>
+              <textarea class="app__textarea app__textarea--original" disabled id="plaintext"></textarea>
+            </div>
+
+            <div class="app__text-wrap">
+              <h2>3. Get encrypted text.</h2>
+              <textarea class="app__textarea app__textarea--encrypted" disabled readonly id="encryptedText"></textarea>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   </body>
