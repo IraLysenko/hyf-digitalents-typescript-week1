@@ -20,6 +20,13 @@ textarea, select {
     padding: 15px;
 }
 
+option {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 15px;
+    font-size: 16px;
+}
 
 .app {
     display: flex;
@@ -53,19 +60,21 @@ textarea, select {
 .app__info {
     display: flex;
     justify-content: space-between;
-    background-color: #f5f5f5;
+    align-items: center;
+    //background-color: #f5f5f5;
     margin-bottom: 20px;
-    border-left: 5px solid gray;
+    //border-left: 5px solid gray;
 }
 
 .app__info-img {
-    width: 30% ;
-    height: 100%;
+    width: 10%;
+    height: auto;
 }
 
 .app__info-text {
     padding: 20px;
     font-style: italic;
+    width: 90%;
 }
 
 .app__info-img img {
@@ -78,8 +87,8 @@ textarea, select {
     justify-content: center;
     flex-direction: column;
     border: 1px solid gray;
-    border-radius: 20px;
     padding: 30px;
+    box-shadow: 0 12px 41px #54354207, 0 2.68036px 9.15789px #5435420b, 0 0.798012px 2.72654px #54354212;
 }
 
 .app__form {
