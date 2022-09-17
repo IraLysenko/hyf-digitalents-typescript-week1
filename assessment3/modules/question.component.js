@@ -7,9 +7,8 @@ const createQuestion = (data, questionsAmount) => {
     let incorrectAnswers = questionData.incorrectAnswers;
     let category = questionData.category;
 
+    console.debug('questionData old');
     console.debug(questionData);
-
-    
 
     // Concat the answers and shuffle them
     let allAnswers = [correctAnswer, ...incorrectAnswers]
@@ -51,24 +50,25 @@ const createQuestion = (data, questionsAmount) => {
 
     $form.addEventListener('submit', (event) => {
         event.preventDefault();
+
         console.debug('index' + index);
 
-        const nextQuestion = () => {
-
+        let nextQuestion = () => {
             if(index <= questionsAmount) {
                 index += 1;
-                //questionData = data[index];
-                question = data[index].question;
-                correctAnswer = data[index].correctAnswer;
-                incorrectAnswers = data[index].incorrectAnswers;
-                category = data[index].category;
+                questionData = data[index];
+                question = questionData.question;
+                correctAnswer = questionData.correctAnswer;
+                incorrectAnswers = questionData.incorrectAnswers;
+                category = questionData.category;
+
                 allAnswers = [correctAnswer, ...incorrectAnswers]
                     .map(value => ({ value, sort: Math.random() }))
                     .sort((a, b) => a.sort - b.sort)
                     .map(({ value }) => value);
 
-                setTimeout(() => {
-                    $question.innerHTML = "";
+
+                    $question.innerHTML = "loading";
                     $question.innerHTML = `
 
                    <div class="question-panel">
@@ -93,8 +93,8 @@ const createQuestion = (data, questionsAmount) => {
                         </form>
                     </div>        
                 `;
-                }, 1000)
 
+                console.debug('questionData new');
                 console.debug(questionData);
             }
         }
@@ -110,6 +110,9 @@ const createQuestion = (data, questionsAmount) => {
         $nextButton.innerHTML = 'Next';
         $nextButton.addEventListener('click', nextQuestion);
 
+        console.debug('questionData new outside');
+        console.debug(questionData);
+
         console.log($response);
 
         if (!$response) {
@@ -117,11 +120,21 @@ const createQuestion = (data, questionsAmount) => {
         }
 
         $response.classList.add('question-response');
-        $response.innerHTML = 'Sorry wrong answer';
+        $response.innerHTML = 'No answer';
 
         if (answer === correctAnswer) {
             $response.innerHTML = 'Correct !!';
-            $buttons.appendChild($nextButton);
+
+            if (index <= questionsAmount) {
+                $buttons.appendChild($nextButton);
+                console.debug('next exist');
+            } else {
+                console.debug('nothing next');
+            }
+        } if(answer === null){
+            $response.innerHTML = 'no answer';
+        } else {
+            $response.innerHTML = 'incorrect answer';
         }
 
         $question.appendChild($response);
