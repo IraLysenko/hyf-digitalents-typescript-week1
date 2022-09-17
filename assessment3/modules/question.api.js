@@ -1,6 +1,11 @@
-const fetchQuestion = () => {
-    // Fetch a question from thehttps://the-trivia-api.com/api/questions?limit=5 API
-    return {};    
+export const fetchQuestion = async (questionsAmount) => {
+    const url = `https://the-trivia-api.com/api/questions?limit=${questionsAmount}`;
+    const response =  await fetch(url);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    let questionsData = await response.json();
+    return questionsData;
 }
 
-export { fetchQuestion };
+export default { fetchQuestion };
