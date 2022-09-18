@@ -49,6 +49,11 @@ h2 {
     color: gray;
 }
 
+.question-panel__score {
+    display: block;
+    margin-bottom: 20px;
+}
+
 .question-panel__buttons {
     padding-top: 30px;
     width: 100%;
