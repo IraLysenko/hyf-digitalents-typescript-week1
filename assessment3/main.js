@@ -5,6 +5,7 @@ let index = 0;
 const questionsAmount = 5;
 const question = await fetchQuestion();
 const nextButton = document.querySelector('.button--next');
+
 const nextQuestion = () => {
     console.debug('wwww');
     if(index <= questionsAmount) {
@@ -14,7 +15,7 @@ const nextQuestion = () => {
 
 if(nextButton) {
     nextButton.addEventListener('click', nextQuestion);
-    console.debug('index' + index);
+    console.debug('horra');
 }
 
 console.debug(question);

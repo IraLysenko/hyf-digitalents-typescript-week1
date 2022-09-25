@@ -37,6 +37,7 @@ const createQuestion = (data, index, questionsAmount) => {
 
             <div class="question-panel__buttons">
               <input class="question-panel__button button bitton--submit" id="submitAnswer" type="submit" value="Check the answer" />
+              <input class="question-panel__button button button--next" id="submitAnswer" type="button" value="Next" />
             </div>
         </form>
     `;
