@@ -41,7 +41,7 @@ h2 {
     z-index: 2;
 }
 
-.app__container, .app section {
+.app__container {
     width: 60%;
     position: relative;
 }
@@ -58,8 +58,8 @@ h2 {
     padding-right: 140px;
 }
 
-.question-panel__category {
-    padding-bottom: 30px;
+.question-panel__category, .question-panel__difficulty {
+    padding-bottom: 15px;
     display: block;
     color: gray;
 }
@@ -84,7 +84,7 @@ h2 {
 
 .question-panel__button--next {
     position: absolute;
-    top: 70px;
+    top: 0;
     right: 0;
 }
 
@@ -104,19 +104,47 @@ h2 {
     background-color: #ccc;
 }
 
-input[type='radio'] + label {
+#questionForm input[type='radio'] + label {
     padding: 15px;
     border: 1px solid gray;
     display: block;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-input[type='radio']:checked + label,
-input[type='radio']:hover + label{
+#questionForm input[type='radio']:checked + label,
+#questionForm input[type='radio']:hover + label{
     background-color: #baebe8;
+}
+
+.app__filters {
+    display: flex;
+    align-items: center;
+}
+
+#appFilters input[type='radio'] + label {
+    padding: 5px;
+    margin: 0 5px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: #baebe8;
+    border-radius: 5px;
+}
+
+#appFilters input[type='radio']:checked + label,
+#appFilters input[type='radio']:hover + label{
+    border: 1px solid gray;
 }
 
 .question-response {
     text-align: center;
+}
+
+#PaginationComponent, #FormComponent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 

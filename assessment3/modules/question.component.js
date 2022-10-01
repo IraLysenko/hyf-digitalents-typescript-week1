@@ -11,16 +11,17 @@ const createQuestion = (data, index, questionsAmount) => {
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
 
-    const $question = document.createElement('section');
+    const $question = document.createElement('div');
+    $question.classList.add("app__container");
 
     // Here you will need to modify the code
     // Add an element with id "questionCategory" to the HTML and set the value to based on the category property
 
-    $question.innerHTML = `
-        <h1 xmlns="http://www.w3.org/1999/html">Quiz</h1>
+    $question.innerHTML = `        
         <form id="questionForm" class="question-panel__question-options question-options" action="">
             <h2 class="question-panel__title">Question: ${question}</h2>
             <span class="question-panel__category">Category: ${category}</span>
+            <span class="question-panel__difficulty">Difficulty: ${data?.difficulty}</span>            
             <span class="question-panel__score">Score: ${index + 1} / ${questionsAmount}</span>
             
               ${allAnswers.map((answer, index) => 
@@ -42,6 +43,7 @@ const createQuestion = (data, index, questionsAmount) => {
         let answer;
         answer = $form.querySelector('input[name="answer"]:checked');
         const nextButton = document.querySelector("#nextButton");
+
         let $response = $form.querySelector('.question-panel__question-response');
         if (answer === null) {
             $response.innerHTML = 'Select the answer';
