@@ -6,7 +6,7 @@ export const fetchQuestion = async () => {
     }
     let questionsData = await response.json();
     console.debug(questionsData);
-    return questionsData;
+    return questionsData = await response.json();
 }
 
 export default { fetchQuestion };

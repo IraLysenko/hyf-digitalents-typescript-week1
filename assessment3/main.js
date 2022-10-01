@@ -12,11 +12,10 @@ $app.appendChild($question);
 const nextButton = document.querySelector('#nextButton');
 if(index < questionsAmount) {
     nextButton.addEventListener('click', () => {
-        console.log('click outside module');
         index += 1;
-        console.log( 'index1 = ' + index);
         $question = createQuestion(question[index], index, questionsAmount);
         $app.innerHTML = '';
         $app.appendChild($question);
+        nextButton.disabled = true;
     });
 }

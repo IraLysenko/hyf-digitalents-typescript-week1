@@ -29,8 +29,8 @@ const createQuestion = (data, index, questionsAmount) => {
               ).join("")}
 
             <div class="question-panel__buttons">
-              <input class="question-panel__button button bitton--submit" id="submitAnswer" type="submit" value="Check the answer" />
-              
+              <input class="question-panel__button button bitton--submit" id="submitAnswer" type="submit" value="Check the answer" />   
+              <span class="question-panel__question-response"></span>           
             </div>
         </form>
     `;
@@ -39,26 +39,24 @@ const createQuestion = (data, index, questionsAmount) => {
     const $form = $question.querySelector('.question-options');
     $form.addEventListener('submit', (event) => {
         event.preventDefault();
-        const answer = $form.querySelector('input[name="answer"]:checked').value;
-        let $response = $question.querySelector('.question-response');
-
-        if (!$response) {
-            $response  = document.createElement('p');
+        let answer;
+        answer = $form.querySelector('input[name="answer"]:checked');
+        const nextButton = document.querySelector("#nextButton");
+        let $response = $form.querySelector('.question-panel__question-response');
+        if (answer === null) {
+            $response.innerHTML = 'Select the answer';
+        } if (answer!= null && answer.value !== correctAnswer) {
+            $response.innerHTML = 'Incorrect answer, choose another one';
+        } if (answer!= null && answer.value === correctAnswer) {
+            $response.innerHTML = 'Correct !!!';
+            if (index < questionsAmount -1 ) {
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+        } else {
+            nextButton.disabled = true;
         }
-        $response.classList.add('question-response');
-
-        $response.innerHTML = 'Sorry wrong answer';
-        if (answer === correctAnswer) {
-            $response.innerHTML = 'Correct !!';
-
-            // if (index <= questionsAmount) {
-            //     console.debug('next exist');
-            // } else {
-            //     console.debug('nothing next');
-            // }
-        }
-
-        $question.appendChild($response);
     });
 
     return $question;

@@ -29,10 +29,21 @@ h2 {
 .app {
     width: 100%;
     min-height: 100vh;
+    position: relative;
 }
 
-.app section {
+.app__pagination {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.app__container, .app section {
     width: 60%;
+    position: relative;
 }
 
 .question-panel {
@@ -41,6 +52,10 @@ h2 {
     padding: 50px;
     box-shadow: 0px 3px 21px 0px rgba(0,0,0,0.15);
     border-radius: 50px;
+}
+
+.question-panel__title {
+    padding-right: 140px;
 }
 
 .question-panel__category {
@@ -61,15 +76,32 @@ h2 {
     justify-content: center;
 }
 
-.question-panel__button:nth-child(2) {
-    margin-left: 30px;
+.question-panel__question-response {
+    padding: 10px 15px;
+    display: block;
+    color: #1416a4;
+}
+
+.question-panel__button--next {
+    position: absolute;
+    top: 70px;
+    right: 0;
 }
 
 .button {
     background-color: #fff;
-    padding: 15px;
+    padding: 10px 15px;
     border: 1px solid gray;
     min-width: 100px;
+    cursor: pointer;
+}
+
+.button--next {
+    background-color: #baebe8;
+}
+
+.button--next:disabled {
+    background-color: #ccc;
 }
 
 input[type='radio'] + label {
