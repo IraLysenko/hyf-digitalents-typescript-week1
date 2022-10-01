@@ -4,25 +4,19 @@ import { createQuestion } from './modules/question.component.js';
 let index = 0;
 const questionsAmount = 5;
 const question = await fetchQuestion();
-const nextButton = document.querySelector('.button--next');
-
-const nextQuestion = () => {
-    console.debug('wwww');
-    if(index <= questionsAmount) {
-        index += 1;
-    }
-};
-
-if(nextButton) {
-    nextButton.addEventListener('click', nextQuestion);
-    console.debug('horra');
-}
-
-console.debug(question);
-const $question = createQuestion(question[index], index, questionsAmount);
-console.debug(index);
-
+let $question = createQuestion(question[index], index, questionsAmount);
 const $app = document.getElementById('app');
-$app.innerHTML = '';
+$app.innerHTML;
 $app.appendChild($question);
 
+const nextButton = document.querySelector('#nextButton');
+if(index < questionsAmount) {
+    nextButton.addEventListener('click', () => {
+        console.log('click outside module');
+        index += 1;
+        console.log( 'index1 = ' + index);
+        $question = createQuestion(question[index], index, questionsAmount);
+        $app.innerHTML = '';
+        $app.appendChild($question);
+    });
+}
