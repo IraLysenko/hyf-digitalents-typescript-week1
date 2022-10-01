@@ -20,13 +20,13 @@ const createQuestion = (data, index, questionsAmount) => {
     $question.innerHTML = `        
         <form id="questionForm" class="question-panel__question-options question-options" action="">
             <h2 class="question-panel__title">Question: ${question}</h2>
-            <span class="question-panel__category">Category: ${category}</span>
+            <span id="questionCategory" class="question-panel__category">Category: ${category}</span>
             <span class="question-panel__difficulty">Difficulty: ${data?.difficulty}</span>            
             <span class="question-panel__score">Score: ${index + 1} / ${questionsAmount}</span>
             
               ${allAnswers.map((answer, index) => 
-                `<input type="radio" name="answer" id="answer-${index}" value="${answer}" hidden>
-                 <label for="answer-${index}">${answer}</label><br>`
+                `<input type="radio" name="answer" id="answer${index+1}" value="${answer}" hidden>
+                 <label for="answer${index+1}">${answer}</label><br>`
               ).join("")}
 
             <div class="question-panel__buttons">
@@ -48,15 +48,14 @@ const createQuestion = (data, index, questionsAmount) => {
         if (answer === null) {
             $response.innerHTML = 'Select the answer';
         } if (answer!= null && answer.value !== correctAnswer) {
-            $response.innerHTML = 'Incorrect answer, choose another one';
+            $response.innerHTML = '. . .';
+            setTimeout(() =>{
+                $response.innerHTML = 'Incorrect answer, choose another one';
+            }, 1000);
         } if (answer!= null && answer.value === correctAnswer) {
             $response.innerHTML = 'Correct !!!';
-            if (index < questionsAmount -1 ) {
-                nextButton.disabled = false;
-            } else {
-                nextButton.disabled = true;
-            }
-        } else {
+            nextButton.disabled = index >= questionsAmount - 1;
+        }  else {
             nextButton.disabled = true;
         }
     });
