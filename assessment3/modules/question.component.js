@@ -48,7 +48,7 @@ const createQuestion = (data, index, questionsAmount) => {
         if (answer === null) {
             $response.innerHTML = 'Select the answer';
         } if (answer!= null && answer.value !== correctAnswer) {
-            $response.innerHTML = '. . .';
+            $response.innerHTML = 'Checking . . .';
             setTimeout(() =>{
                 $response.innerHTML = 'Incorrect answer, choose another one';
             }, 1000);

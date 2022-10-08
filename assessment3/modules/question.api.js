@@ -1,4 +1,4 @@
-export const fetchQuestion = async (amount) => {
+export const fetchQuestion = async (amount)  => {
     const url = `https://the-trivia-api.com/api/questions?limit=${amount}`;
     const response =  await fetch(url);
     if (!response.ok) {
